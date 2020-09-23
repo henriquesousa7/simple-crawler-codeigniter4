@@ -1,0 +1,1 @@
+<h2 class="text-center">Erro ao capturar os cursos alura</h2>
