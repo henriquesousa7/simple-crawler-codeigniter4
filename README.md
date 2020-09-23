@@ -9,7 +9,7 @@ Mais informações podem ser encontradas no [site oficial](http://codeigniter.co
 
 Baixe o projeto ou clone em um diretório de sua preferência.
 
-Após o termiar de baixar, execute o comando `composer update` no diretorio criado para atualizar os repositorios do projeto.
+Após terminar de baixar, execute o comando `composer update` no diretorio criado para atualizar os repositorios do projeto.
 
 Você pode utilizar o servidor de testes do próprio CodeIgniter utilizando o comando `php spark serve`, mas se preferir, pode ser usado algum servidor Web, como o Apache, IIS etc. 
 
