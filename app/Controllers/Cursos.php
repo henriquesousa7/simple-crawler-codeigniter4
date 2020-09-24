@@ -74,7 +74,7 @@ class Cursos extends Controller{
             $fp = fopen('php://output', 'w');
 
             foreach($data as $curso){
-                fputcsv($fp, $curso);
+                fputcsv($fp, $curso, ';');
             }
 
         }
