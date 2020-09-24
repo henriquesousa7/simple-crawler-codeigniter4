@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
-class Buscador extends Model{
+class SearchEG extends Model{
 
     private $httpClient;
     private $crawler;
@@ -18,7 +18,7 @@ class Buscador extends Model{
     
     }
 
-    public function buscar(string $url): array{
+    public function search(string $url): array{
         
         $response = $this->httpClient->request('GET', $url);
 

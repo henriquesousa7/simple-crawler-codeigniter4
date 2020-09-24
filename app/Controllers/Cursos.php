@@ -4,8 +4,9 @@ namespace App\Controllers;
 
 require '/var/www/html/simpleProject/vendor/autoload.php';
 
-use App\Models\Buscador;
+
 use App\Models\Database;
+use App\Models\SearchEG;
 use CodeIgniter\Controller;
 
 use \GuzzleHttp\Client;
@@ -23,9 +24,10 @@ class Cursos extends Controller{
         
         $client = new Client();
         $crawler = new Crawler();
-        $buscador = new Buscador($client, $crawler);
 
-        $cursos = $buscador->buscar('https://www.alura.com.br/cursos-online-programacao/php');
+        $searchEG = new SearchEG($client, $crawler);
+
+        $cursos = $searchEG->search('https://www.alura.com.br/cursos-online-programacao/php');
 
         if(!empty($cursos)){
             foreach ($cursos as $curso) {
@@ -58,6 +60,24 @@ class Cursos extends Controller{
         echo view('mainViews/footer');
     }
 
-}
+    public function exportCSV(){
 
-?>
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=cursos.csv');
+
+        $database = new Database();
+        $data = $database->getCursos();
+
+        if(!empty($data)){
+
+            $fp = fopen('php://output', 'w');
+
+            foreach($data as $curso){
+                fputcsv($fp, $curso);
+            }
+
+        }
+        fclose($fp);
+    }
+
+}
