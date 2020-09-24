@@ -26,6 +26,9 @@ e quaisquer configurações do banco de dados.
 Use o script para criar a base de dados que é utilizada no projeto.
 
 ```sql
+create database alura_cursos;
+use alura_cursos;
+
 CREATE TABLE cursos (
         id int NOT NULL AUTO_INCREMENT,
         nome varchar(150) NOT NULL,
