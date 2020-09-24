@@ -20,6 +20,7 @@ class Cursos extends Controller{
 
         if(!empty($database->getCursos())){
             $database->emptyTable();
+            $database->simpleQuery("ALTER TABLE cursos AUTO_INCREMENT = 1");
         }
         
         $client = new Client();
