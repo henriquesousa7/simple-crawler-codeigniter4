@@ -76,4 +76,25 @@ class Cursos extends Controller
         }
         fclose($fp);
     }
+
+    public function returnJSON()
+    {
+        $client = new Client();
+        $crawler = new Crawler();
+
+        $searchEG = new SearchEG($client, $crawler);
+
+        $cursos = $searchEG->search('https://www.alura.com.br/cursos-online-programacao/php');
+
+        $finalData = [];
+        
+        foreach ($cursos as $index => $curso) {
+            $data = [
+                'id' => ++$index,
+                'nome' => $curso
+            ];
+            array_push($finalData, $data);
+        }
+        echo json_encode($finalData);
+    }
 }
